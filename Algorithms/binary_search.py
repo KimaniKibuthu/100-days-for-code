@@ -1,21 +1,19 @@
 
 def binary_search(input_array, value):
-    if len(input_array) > 1:
-        median = input_array[len(input_array)//2]
-    else:
-        median = input_array[0]
-    if value < median:
-        new_arr = input_array[:median]
-        binary_search(new_arr, value)
+    low = 0
+    high = len(input_array) -1
 
-    elif value > median:
-        new_arr = input_array[median:]
-        binary_search(new_arr, value)
+    while high >= low:
+        mid = low + (high - low)//2
+        if input_array[mid] == value:
+            return mid
+        elif input_array[mid] > value:
+            high = mid-1
+        elif input_array[mid] < value:
+          low = mid+1
+            
 
-    elif value == median:
-        return 'value in array'
-    else:
-        return -1
+    return -1
 
 test_list = [1,3,9,11,15,19,29]
 test_val1 = 25
