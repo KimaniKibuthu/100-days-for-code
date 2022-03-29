@@ -1,6 +1,9 @@
 from turtle import Turtle, Screen
 import time
 from snake_class import Snake
+from food import Food
+from scoreboard import Score
+
 
 
 
@@ -10,6 +13,8 @@ screen.title('Snake Xenzia')
 screen.tracer(0)
 
 snake = Snake()
+foody = Food()
+scores = Score()
 
 screen.listen()
 screen.onkey(snake.up, 'Up')
@@ -22,15 +27,12 @@ while game_is_on:
     screen.update()
     time.sleep(0.1)
     snake.move()
+    
+    # Detect collision with food
+    if snake.head.distance(foody) < 15:
+        foody.refresh()
+        scores.keep_score()
  
 
 screen.exitonclick()
 
-
-
-# def run():
-#     is_continue = True
-#     while is_continue:
-#         # Build turtles
-#         # Create food randomly
-#         # Move continously
